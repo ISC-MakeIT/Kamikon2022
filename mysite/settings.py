@@ -139,7 +139,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 # for /static/root/favicon.ico    
-WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static', 'root')
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
