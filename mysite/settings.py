@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['.herokuapp.com']
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
-    'pls.apps.PlsConfig',
+    'pls',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,7 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -140,11 +140,6 @@ STATICFILES_DIRS = (
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # for /static/root/favicon.ico    
 WHITENOISE_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR , 'static', 'img'),
-)
-MEDIA_URL = '/static/img/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,11 +158,15 @@ if not DEBUG:
     }
 
     AWS_LOCATION = 'static'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     S3_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
     STATIC_URL = S3_URL
-    MEDIA_URL = S3_URL
+    
+    MEDIA_ROOT = (
+    os.path.join(BASE_DIR , 'static', 'img'),
+    )
+    MEDIA_URL = '/media/'
     
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
