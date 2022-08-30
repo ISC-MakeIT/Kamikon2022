@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import settings
 from django.conf.urls.static import static
 from django.views.static import serve
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -24,7 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pls.urls')),
 ]
+from . import local_settings
+urlpatterns += static(local_settings.MEDIA_URL, document_root=local_settings.MEDIA_ROOT)
 
-#if settings.DEBUG:
+#from . import settings
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
