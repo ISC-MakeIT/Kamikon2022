@@ -7,9 +7,6 @@ db.sqlite3
 media
 local_settings.py
 
-#pyenv
-myvenv
-
 # Backup files # 
 *.bak 
 
