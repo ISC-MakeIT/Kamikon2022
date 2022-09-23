@@ -24,7 +24,7 @@ class Create_account(CreateView):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return redirect('/home')
         return render(request, 'pls/register.html', {'form': form,})
 
     def get(self, request, *args, **kwargs):
