@@ -9,6 +9,8 @@ class Users(models.Model) :
     usertype = models.BooleanField()#教師だったらFalse、生徒だったらTrue
     username = models.CharField(max_length=255)#氏名。特に説明なし
     password = models.CharField(max_length=100)#パスワード
+    def __str__(self) :
+        return self.userid
 
 #課題の基本情報テーブル    
 class Kadai(models.Model) :
@@ -18,6 +20,8 @@ class Kadai(models.Model) :
     submission_deadline = models.DateTimeField()#提出期限
     kadai_desc = models.TextField() #課題についての説明。改行は/nで識別。
     question_cnt = models.IntegerField()#問題数
+    def __str__(self) :
+        return self.kadai_id
 
 #誰がどの課題を提出しないといけないのかはこのテーブルでわかる
 class KadaiAdmin(models.Model) :
@@ -30,6 +34,8 @@ class KadaiQuestion(models.Model) :
     question_num = models.IntegerField()#問題の番号
     question_state = models.TextField()#問題文
     question_type = models.CharField(max_length=100)#問題の解答形式。(text, radio, checkbox, file)
+    def __str__(self) :
+        return str(self.question_num)
     
 #選択問題だった際の項目
 class SelectInfo(models.Model) :
