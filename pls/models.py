@@ -35,7 +35,7 @@ class KadaiQuestion(models.Model) :
     question_state = models.TextField()#問題文
     question_type = models.CharField(max_length=100)#問題の解答形式。(text, radio, checkbox, file)
     def __str__(self) :
-        return self.question_num
+        return str(self.question_num)
     
 #選択問題だった際の項目
 class SelectInfo(models.Model) :
