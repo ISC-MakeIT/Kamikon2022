@@ -59,6 +59,7 @@ models.pyに、どのように使うかなど詳細情報が記載してあり�
 ```
 {
     "kadai_id": "qawsedrftgyhujikolp",
+    "kadai_name": "数学プリント１",
     "created_date": "2022,10,1",
     "submission_deadline": "2022,10,1",
     "kadai_desc": "数学プリント何番を全問解いた後、全体が映るよう写真を撮影し、その画像データをこちらに送信してください。なるべくはっきり移るようにしてください。あまりにも不明瞭な場合、送りなおすよう指示をすることがあります。",
@@ -80,30 +81,40 @@ models.pyに、どのように使うかなど詳細情報が記載してあり�
     "kadai_id": "qawsedrftgyhujikolp",
     "question_num": "1",
     "question_state": "ななよさんは8:05AMに学校に着き、2:30PMに学校を出ました。しんたろう君が学校にいた時間はどのくらいですか？",
-    "question_type": "textarea",
-    "is_multiple": NULL
+    "question_type": "text",
 }
 ```
 
-### 選択問題だった際の各項目(QuestionItem)
+### 選択問題だった際の各項目(SelectInfo)
 ```
 {
     "kadai_id": "qawsedrftgyhujikolp",
     "question_num": "1",
-    "question_item_index": "ア",
+    "question_item_index": 1,
     "question_item_content": "選択肢",
-    "multiple_points", NULL,
-    "is_appropriate", 3
+    "appropriate_point": 3
 }
 ```
 
-### 記述問題だった際の正解キーワード(QuestionKeyword)
+### 記述問題だった際の正解キーワード及び文字数(TextInfo)
 ```
 {
     "kadai_id": "qawsedrftgyhujikolp",
     "question_num": "1",
     "keyword": "推敲/非常に/santamonica",
+    "min_word": 20,
+    "max_word": 100,
     "point": 5
+}
+```
+
+### ファイル提出に関する情報(FileInfo)
+```
+{
+    "kadai_id": "qawsedrftgyhujikolp",
+    "question_num": "1",
+    "extension": "gazou",
+    "is_hand": True
 }
 ```
 
@@ -113,8 +124,18 @@ models.pyに、どのように使うかなど詳細情報が記載してあり�
     "userid": "qawsedrftgyhujikolp",
     "kadai_id": "qawsedrftgyhujikolp",
     "question_num": "1",
-    "question_answer": "ア"
+    "question_answer": 1,
     "question_answer_file": NULL
+}
+```
+
+### 先生からの評価(Assessment)
+```
+{
+    "userid": "qawsedrftgyhujikolp",
+    "kadai_id": "qawsedrftgyhujikolp",
+    "total_score": 3,
+    "comment": "出直してこい。"
 }
 ```
 
