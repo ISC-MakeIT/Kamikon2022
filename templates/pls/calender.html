@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+課題表示ページ
+<br>ユーザー名：{{username}}
+<br>ユーザーID:{{userid}}
+<ul>
+{% for item1 in data %}
+    {% for item2 in kadai %}
+        {% if item2.kadai_id == item1.kadai_id.kadai_id %}
+           <li><a href="{% url 'Qdesc' item1.kadai_id.kadai_id %}"> <!--{{item2.kadai_name}}:--> {{item2.kadai_desc}}</a></li>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+</ul>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+解答ページ
+<form action="{% url 'result' kadai_id %}"  enctype="multipart/form-data" method="POST">
+    
+{% for item in kadai_question %}
+    {% csrf_token %}
+    {{item.question_num}}.{{item.question_state}}
+    {% if item.question_type == 'textarea' %}
+    <p>
+        <textarea name="{{item.question_num}}" rows = "8" cols = "45"></textarea>
+    </p>
+    {% elif item.question_type == 'radio' %}
+    <p>
+        {% for r in kadai_question_item %}
+            {% if r.question_num.question_num == item.question_num %}
+            <label>
+                <input type="radio" name="{{item.question_num}}" value="{{r.question_item_index}}"> {{r.question_item_content}}
+            </label>
+            {% endif %}
+        {% endfor %}
+    </p>
+    {% elif item.question_type == 'checkbox' %}
+    <p>
+        {% for c in kadai_question_item %}
+            {% if c.question_num.question_num == item.question_num %}
+            <label>
+                <input type="checkbox" name="{{item.question_num}}" value="{{c.question_item_index}}"> {{c.question_item_content}}
+            </label>
+            {% endif %}
+        {% endfor %}
+    </p>
+    {% elif item.question_type == 'file_upload' %}
+    <p>
+        <input type="file" name="{{item.question_num}}">
+    </p>
+    {% endif %}
+{% endfor %}
+    <input type="submit" value="送信">
+</form>
+</html>
